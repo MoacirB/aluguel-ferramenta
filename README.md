@@ -5,13 +5,13 @@
 Requisições e respostas em formato JSON
 
 ## Usuários
+
+</br>
+</br>
+
 ### URL:/usuario
-  </br>
-  </br>
-  </br>
-  </br>
-  </br>
-  
+</br>
+
 #### ->GET
 Retorna uma lista com todos os usuários cadastrados
 
@@ -56,9 +56,18 @@ Body:
 #### ->DELETE
 Deleta o usuário autenticado e as ferramentas cadastradas por ele
 Header: authorization = ID do usuário
+</br>
+</br>
+</br>
 
 ## Ferramentas
+
+</br>
+</br>
+
 ### URL:/ferramenta
+</br>
+
 #### ->GET
 Retorna uma lista das ferramentas cadastradas
 
@@ -107,3 +116,6 @@ Body:
 Deleta uma ferramenta do usuário cadastrado
 Header: authorization = ID do usuário
 Query: id=id_ferramenta *Ex: /ferramenta?id=1*
+</br>
+</br>
+</br>
