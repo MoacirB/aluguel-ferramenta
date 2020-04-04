@@ -6,12 +6,12 @@ Requisições e respostas em formato JSON
 
 ## Usuários
 ### URL:/usuario
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
 #### ->GET
 Retorna uma lista com todos os usuários cadastrados
 
