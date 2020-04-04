@@ -6,10 +6,11 @@ Requisições e respostas em formato JSON
 
 ## Usuários
 ### URL:/usuario
-#### GET
+\n
+#### ->GET
 Retorna uma lista com todos os usuários cadastrados
 
-#### POST
+#### ->POST
 Cadastra um usuário
 Body:
 ```JSON
@@ -28,7 +29,7 @@ Body:
 
 
 
-#### PUT
+#### ->PUT
 Altera campos do usuário
 Header: authorization = ID do usuário
 Body:
@@ -47,16 +48,16 @@ Body:
 }
 ```
 
-#### DELETE
+#### ->DELETE
 Deleta o usuário autenticado e as ferramentas cadastradas por ele
 Header: authorization = ID do usuário
 
 ## Ferramentas
 ### URL:/ferramenta
-#### GET
+#### ->GET
 Retorna uma lista das ferramentas cadastradas
 
-#### POST
+#### ->POST
 Cadastra uma ferramenta a partir do usuário autenticado
 Header: authorization = ID do usuário
 Body:
@@ -76,7 +77,7 @@ Body:
 
 
 
-#### PUT
+#### ->PUT
 Altera campos de uma ferramenta
 Header: authorization = ID do usuário
 Query: id=id_ferramenta *Ex: /ferramenta?id=1*
@@ -88,7 +89,7 @@ Body:
 }
 ```
 
-##### Exemplo para teste
+##### ->Exemplo para teste
 ```JSON
 {
     "fields": ["valor_dia"],
@@ -97,7 +98,7 @@ Body:
 ```
 
 
-#### DELETE
+#### ->DELETE
 Deleta uma ferramenta do usuário cadastrado
 Header: authorization = ID do usuário
 Query: id=id_ferramenta *Ex: /ferramenta?id=1*
