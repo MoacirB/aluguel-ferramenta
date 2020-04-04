@@ -1,15 +1,15 @@
 # Aluguel/Empréstimo de Ferramentas
  API REST para aluguel/empréstimo de ferramentas em Express/NodeJS
 
-##Detalhes
+## Detalhes
 Requisições e respostas em formato JSON
 
-##Usuários
-###URL:/usuario
-####GET
+## Usuários
+### URL:/usuario
+#### GET
 Retorna uma lista com todos os usuários cadastrados
 
-####POST
+#### POST
 Cadastra um usuário
 Body:
 ```JSON
@@ -18,7 +18,7 @@ Body:
     "senha":"senha"
 }
 ```
-#####Exemplo para teste
+##### Exemplo para teste
 ```JSON
 {
     "usuario":"MArcelo",
@@ -28,7 +28,7 @@ Body:
 
 
 
-####PUT
+#### PUT
 Altera campos do usuário
 Header: authorization = ID do usuário
 Body:
@@ -39,7 +39,7 @@ Body:
 }
 ```
 
-#####Exemplo para teste
+##### Exemplo para teste
 ```JSON
 {
     "fields": ["usuario", "senha"],
@@ -47,26 +47,26 @@ Body:
 }
 ```
 
-####DELETE
+#### DELETE
 Deleta o usuário autenticado e as ferramentas cadastradas por ele
 Header: authorization = ID do usuário
 
-##Ferramentas
-###URL:/ferramenta
-####GET
+## Ferramentas
+### URL:/ferramenta
+#### GET
 Retorna uma lista das ferramentas cadastradas
 
-####POST
+#### POST
 Cadastra uma ferramenta a partir do usuário autenticado
 Header: authorization = ID do usuário
 Body:
 ```JSON
 {
     "descricao": "descrição",
-    "valor_dia": valor
+    "valor_dia": "valor(Decimal)"
 }
 ```
-#####Exemplo para teste
+##### Exemplo para teste
 ```JSON
 {
     "descricao": "Martelo",
@@ -76,7 +76,7 @@ Body:
 
 
 
-####PUT
+#### PUT
 Altera campos de uma ferramenta
 Header: authorization = ID do usuário
 Query: id=id_ferramenta *Ex: /ferramenta?id=1*
@@ -88,7 +88,7 @@ Body:
 }
 ```
 
-#####Exemplo para teste
+##### Exemplo para teste
 ```JSON
 {
     "fields": ["valor_dia"],
@@ -97,7 +97,7 @@ Body:
 ```
 
 
-####DELETE
+#### DELETE
 Deleta uma ferramenta do usuário cadastrado
 Header: authorization = ID do usuário
 Query: id=id_ferramenta *Ex: /ferramenta?id=1*
