@@ -6,9 +6,6 @@ Requisições e respostas em formato JSON
 
 ## Usuários
 
-</br>
-</br>
-
 ### URL:/usuario
 </br>
 
@@ -61,9 +58,6 @@ Header: authorization = ID do usuário
 </br>
 
 ## Ferramentas
-
-</br>
-</br>
 
 ### URL:/ferramenta
 </br>
