@@ -36,5 +36,11 @@ module.exports = {
         try{
             connection.query(`select id from ferramenta where id_usuario=${id}`,callback);
         }catch(err){console.log(`Error:${err}`);}
+    },
+
+    count(id, callback){
+        try{
+            connection.query(`SELECT F.id, F.descricao, count(A.id) as count from ferramenta AS F INNER JOIN aluguel as A where ${id} = F.id AND ${id} = A.id_ferramenta`,callback);
+        }catch(err){console.log(`Error:${err}`);}
     }
 }

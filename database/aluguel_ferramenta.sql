@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 05-Abr-2020 às 02:54
+-- Generation Time: 05-Abr-2020 às 23:38
 -- Versão do servidor: 5.7.23
 -- versão do PHP: 7.2.10
 
@@ -25,21 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `aluguel`
---
-
-DROP TABLE IF EXISTS `aluguel`;
-CREATE TABLE IF NOT EXISTS `aluguel` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_usuario` int(11) NOT NULL,
-  `id_ferramenta` int(11) NOT NULL,
-  `dias` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `ferramenta`
 --
 
@@ -51,28 +36,16 @@ CREATE TABLE IF NOT EXISTS `ferramenta` (
   `valor_dia` decimal(5,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuario` (`id_usuario`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Estrutura da tabela `usuario`
+-- Extraindo dados da tabela `ferramenta`
 --
 
-DROP TABLE IF EXISTS `usuario`;
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(30) NOT NULL,
-  `senha` varchar(12) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`id`, `usuario`, `senha`) VALUES
-(1, 'José', '1234');
+INSERT INTO `ferramenta` (`id`, `descricao`, `id_usuario`, `valor_dia`) VALUES
+(1, 'Martelo', 1, '3.25'),
+(4, 'Mjolnir', 4, '150.00'),
+(3, 'Furadeira', 2, '7.50');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

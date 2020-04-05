@@ -3,7 +3,7 @@ const ferramentaModel = require('../models/ferramenta');
 
 module.exports = {
     create(req, res){
-        let { usuario, senha } = req.body;
+        const { usuario, senha } = req.body;
 
         model.create(usuario, senha, (error)=>{
             if(error)return res.json({error});
@@ -15,13 +15,24 @@ module.exports = {
     list(req, res){
         model.list( (error, result)=>{
             if(error)return res.json({error});
-            res.json(result);
+
+            return res.json(result);
+        });
+    },
+
+    show(req, res){
+        const id = req.params.id;
+
+        model.show(id, (error, result)=>{
+            if(error)return res.json({error});
+
+            return res.json(result[0]);
         });
     },
 
     alter(req, res){
-        let { fields, values } = req.body;
-        let id = req.headers.authorization;
+        const { fields, values } = req.body;
+        const id = req.headers.authorization;
 
         model.alter(id, fields, values, (error)=>{
             if(error)return res.json({error});
@@ -31,7 +42,7 @@ module.exports = {
     },
 
     delete(req, res){
-        let id = req.headers.authorization;
+        const id = req.headers.authorization;
         ferramentaModel.findIDUser(id, (error, result)=>{/*Encontra ferramentas cadastradas pelo usuário*/
             if(error)return res.json({error});
 
@@ -40,7 +51,7 @@ module.exports = {
             });
             model.delete(id, (error, result)=>{/*Deleta o usuário*/
                 if(error)return res.json({error});
-                res.send(`Usuario com id = ${id} deletado`);
+                return res.send(`Usuario com id = ${id} deletado`);
             });
         });
     }
