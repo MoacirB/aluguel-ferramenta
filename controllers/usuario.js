@@ -26,12 +26,18 @@ module.exports = {
         let data = {};
 
       usuarioModel.findID(id, (error, result)=>{
+          if(error)return res.json({error});
+
           data.usuario = result[0];
 
           ferramentaModel.findIDUser(id, (error, result)=>{
+            if(error)return res.json({error});
+
             data.ferrmamenta = result;
 
             aluguelModel.findIDUser(id, (error, result)=>{
+                if(error)return res.json({error});
+
                 data.aluguel = result;
 
                 return res.json(data);
