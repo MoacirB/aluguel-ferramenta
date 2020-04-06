@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 05-Abr-2020 às 23:38
+-- Generation Time: 06-Abr-2020 às 21:38
 -- Versão do servidor: 5.7.23
 -- versão do PHP: 7.2.10
 
@@ -25,27 +25,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ferramenta`
+-- Estrutura da tabela `aluguel`
 --
 
-DROP TABLE IF EXISTS `ferramenta`;
-CREATE TABLE IF NOT EXISTS `ferramenta` (
+DROP TABLE IF EXISTS `aluguel`;
+CREATE TABLE IF NOT EXISTS `aluguel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(50) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `valor_dia` decimal(5,2) NOT NULL,
+  `id_ferramenta` int(11) NOT NULL,
+  `quantidade_dias` int(11) NOT NULL,
+  `data` date NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_usuario` (`id_usuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  KEY `fk_ferramenta` (`id_ferramenta`),
+  KEY `fk_usuario` (`id_usuario`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `ferramenta`
+-- Extraindo dados da tabela `aluguel`
 --
 
-INSERT INTO `ferramenta` (`id`, `descricao`, `id_usuario`, `valor_dia`) VALUES
-(1, 'Martelo', 1, '3.25'),
-(4, 'Mjolnir', 4, '150.00'),
-(3, 'Furadeira', 2, '7.50');
+INSERT INTO `aluguel` (`id`, `id_usuario`, `id_ferramenta`, `quantidade_dias`, `data`) VALUES
+(2, 2, 1, 7, '2020-03-21'),
+(3, 2, 4, 7, '2020-04-09'),
+(4, 2, 4, 3, '2020-04-27'),
+(5, 2, 4, 1, '2020-05-26'),
+(6, 4, 1, 1, '2020-05-26');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
