@@ -31,5 +31,11 @@ module.exports = {
         try{
             connection.query(`select id, id_usuario from aluguel where id=${id}`,callback);
         }catch(err){console.log(`Error:${err}`);}
+    },
+
+    findIDUser(id, callback){
+        try{
+            connection.query(`select id, id_ferramenta, quantidade_dias, data from aluguel where id_usuario=${id}`,callback);
+        }catch(err){console.log(`Error:${err}`);}
     }
 }

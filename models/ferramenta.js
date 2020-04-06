@@ -34,7 +34,7 @@ module.exports = {
 
     findIDUser(id, callback){
         try{
-            connection.query(`select id from ferramenta where id_usuario=${id}`,callback);
+            connection.query(`select * from ferramenta where id_usuario=${id}`,callback);
         }catch(err){console.log(`Error:${err}`);}
     },
 

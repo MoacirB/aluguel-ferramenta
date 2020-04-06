@@ -1,11 +1,12 @@
-const model = require('../models/usuario');
+const usuarioModel = require('../models/usuario');
 const ferramentaModel = require('../models/ferramenta');
+const aluguelModel = require('../models/alugueis');
 
 module.exports = {
     create(req, res){
         const { usuario, senha } = req.body;
 
-        model.create(usuario, senha, (error)=>{
+       usuarioModel.create(usuario, senha, (error)=>{
             if(error)return res.json({error});
 
             return res.send("Usuário criado");
@@ -13,7 +14,7 @@ module.exports = {
     },
 
     list(req, res){
-        model.list( (error, result)=>{
+       usuarioModel.list( (error, result)=>{
             if(error)return res.json({error});
 
             return res.json(result);
@@ -22,19 +23,28 @@ module.exports = {
 
     show(req, res){
         const id = req.params.id;
+        let data = {};
 
-        model.show(id, (error, result)=>{
-            if(error)return res.json({error});
+      usuarioModel.findID(id, (error, result)=>{
+          data.usuario = result[0];
 
-            return res.json(result[0]);
-        });
+          ferramentaModel.findIDUser(id, (error, result)=>{
+            data.ferrmamenta = result;
+
+            aluguelModel.findIDUser(id, (error, result)=>{
+                data.aluguel = result;
+
+                return res.json(data);
+            });
+          });
+      });
     },
 
     alter(req, res){
         const { fields, values } = req.body;
         const id = req.headers.authorization;
 
-        model.alter(id, fields, values, (error)=>{
+       usuarioModel.alter(id, fields, values, (error)=>{
             if(error)return res.json({error});
 
             return res.send('Dados alterados');
@@ -49,7 +59,7 @@ module.exports = {
             for(let I=0; I<result.length; I++)ferramentaModel.delete(result[I].id, (error)=>{/*Deleta cada ferramenta cadastrada pelo usuário*/
                 if(error)return res.json({error});
             });
-            model.delete(id, (error, result)=>{/*Deleta o usuário*/
+           usuarioModel.delete(id, (error, result)=>{/*Deleta o usuário*/
                 if(error)return res.json({error});
                 return res.send(`Usuario com id = ${id} deletado`);
             });
